@@ -1,14 +1,20 @@
 import CanvasComponent from './components/CanvasComponent'
 import React from 'react'
 import { Stage, Layer, Text, Line } from 'react-konva';
-import('./App.css');
+import './App.css';
+import NavigationMenu from "./components/NavigationMenu";
 
 class App extends React.Component {
-  render() {
-    return (
-            <Stage width={500} height={500}>
-              <Layer>
-                  <Text text="click" />
+    constructor(props) {
+        super(props);
+        this.state = { menu: null };
+    }
+
+    render() {
+        return (
+        /*<Stage width={500} height={500}>
+            <Layer>
+                <Text text="click" />
                   <CanvasComponent />
                   <Line
                       x={0}
@@ -47,9 +53,20 @@ class App extends React.Component {
                       stroke="black"
                   />
               </Layer>
-            </Stage>
-    )
-  }
+            </Stage>*/
+
+            <div>
+              <button onClick={this.showMenuHandler}>Some button</button>
+                { this.state.menu }
+            </div>
+        )
+    }
+
+    showMenuHandler() {
+        this.setState((state) => ({
+            menu: NavigationMenu
+        }));
+    }
 }
 
 export default App;
